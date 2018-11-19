@@ -1,0 +1,36 @@
+group 'ru.test.w'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    maven {
+        url "http://msk1-vm-nexus01.unix.nspk.ru:8081/nexus/content/groups/public"
+    }
+
+    maven {
+        url "http://msk1-vm-nexus01.unix.nspk.ru:8081/nexus/content/repositories/central"
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.codeborne', name: 'selenide', version: '5.0.1'
+}
+group 'ru.test.example'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
