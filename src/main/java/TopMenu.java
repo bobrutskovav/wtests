@@ -1,7 +1,7 @@
-import static com.codeborne.selenide.Selenide.$x;
-
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$x;
 
 public class TopMenu {
 
@@ -10,10 +10,11 @@ public class TopMenu {
     SelenideElement aboutLink = $x("//a[text()='About']");
 
 
-    public void topMenuIsPresent() {
+    public boolean topMenuIsPresent() {
         resourcesLink.shouldBe(Condition.visible);
         subjectsLink.shouldBe(Condition.visible);
         aboutLink.shouldBe(Condition.visible);
+        return true;
     }
 
 }
