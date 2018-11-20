@@ -1,9 +1,9 @@
-import static com.codeborne.selenide.Selenide.$x;
-
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Driver;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.WebElement;
+
+import static com.codeborne.selenide.Selenide.$x;
 
 public class WStudentsPage extends AbstractPage {
 
@@ -11,18 +11,17 @@ public class WStudentsPage extends AbstractPage {
 
     private SelenideElement wileyPLUSLink = $x("//a[text() = 'WileyPLUS']");
 
-    public boolean wileyPlusLinkIsCorrect() {
+    public void wileyPlusLinkIsCorrect() {
         wileyPLUSLink.shouldBe(new Condition("Wiley Plus Condition Checker") {
             @Override
             public boolean apply(Driver driver, WebElement element) {
                 return element.isDisplayed() && element.getAttribute("href").equalsIgnoreCase(wileyLink);
             }
         });
-        return true;
     }
 
     @Override
     protected SelenideElement getHeader() {
-        return $x("//p[.='Education']");
+        return $x("//p[.='Students']");
     }
 }

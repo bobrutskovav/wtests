@@ -1,13 +1,18 @@
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-
+import com.google.common.io.Files;
 import io.restassured.RestAssured;
-import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import static io.restassured.RestAssured.get;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 public class ApiTests {
 
@@ -40,10 +45,10 @@ public class ApiTests {
 
 
     @Test
-    public void imageTest() {
-        byte[] expectedImage = ApiTests.class.getResource("/pic/test.png").getFile().getBytes();
-        byte[] actualImange = given().get("/image/png").getBody().asByteArray();
-        Assertions.assertEquals(expectedImage, actualImange);
+    public void imageTest() throws IOException {
+        byte[] expectedImage = Files.toByteArray(new File(ApiTests.class.getResource("/pic/test.png").getFile()));
+        byte[] actualImange = get("/image/png").getBody().asByteArray();
+        Assertions.assertArrayEquals(expectedImage, actualImange);
     }
 
 

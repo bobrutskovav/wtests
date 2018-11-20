@@ -1,8 +1,9 @@
-import static com.codeborne.selenide.Selenide.$x;
-import static java.lang.String.format;
-
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
+
+import static com.codeborne.selenide.Selenide.$x;
+import static java.lang.String.format;
 
 
 public abstract class AbstractPage {
@@ -28,9 +29,11 @@ public abstract class AbstractPage {
         return topMenu;
     }
 
-    public boolean checkHeaderIsPresent() {
+    public void checkHeaderIsPresent() {
         SelenideElement header = getHeader();
-        return header == null || header.isDisplayed();
+        if (header != null) {
+            header.shouldBe(Condition.visible);
+        }
 
     }
 
