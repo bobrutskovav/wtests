@@ -1,9 +1,9 @@
+import static com.codeborne.selenide.Selenide.$x;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Driver;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.WebElement;
-
-import static com.codeborne.selenide.Selenide.$x;
 
 public class WStudentsPage extends AbstractPage {
 
@@ -19,5 +19,10 @@ public class WStudentsPage extends AbstractPage {
             }
         });
         return true;
+    }
+
+    @Override
+    protected SelenideElement getHeader() {
+        return $x("//p[.='Education']");
     }
 }
