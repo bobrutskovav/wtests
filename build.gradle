@@ -7,13 +7,6 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenLocal()
-    maven {
-        url "http://msk1-vm-nexus01.unix.nspk.ru:8081/nexus/content/groups/public"
-    }
-
-    maven {
-        url "http://msk1-vm-nexus01.unix.nspk.ru:8081/nexus/content/repositories/central"
-    }
 }
 
 dependencies {
